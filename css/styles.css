@@ -1,7 +1,51 @@
+body{
+  background-color: rgb(176, 177, 180);
+}
+
 h1 {
   text-align: center;
 }
 
 #show-contact {
   display: none;
+  margin-top: 301px;
+  background-color:rgb(79, 236, 233);
+  border-radius:5px;rgb(187, 181, 183);
+  border: 2px solid grey;
+  padding:10px;
+  display:none;
+  width: 49.2%;
+}
+
+.jumbotron {
+  background-color:rgb(79, 236, 233);
+  border-radius:5px;rgb(187, 181, 183);
+  border: 2px solid grey;
+}
+
+form{
+  background-color:rgb(79, 236, 233);
+  border-radius:3px;rgb(187, 181, 183);
+  border: 2px solid grey;
+  width: 49.2%;
+  display:inline-block;
+  float:left;
+  padding:5px;
+}
+
+#landingZone {
+  background-color:rgb(79, 236, 233);
+  border-radius:5px;rgb(187, 181, 183);
+  border: 2px solid grey;
+  width: 49%;
+  padding:10px;
+  float:right;
+}
+
+li {
+list-style-type: none;
+}
+
+input {
+width: 100%;
 }
