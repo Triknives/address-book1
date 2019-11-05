@@ -1,17 +1,19 @@
 body{
-  background-color: rgb(176, 177, 180);
+  background-color: #c3c3c3;
+  font-weight: 600;
 }
 
 h1 {
   text-align: center;
 }
 
+
 #show-contact {
   display: none;
   margin-top: 301px;
   background-color:rgb(79, 236, 233);
-  border-radius:5px;rgb(187, 181, 183);
-  border: 2px solid grey;
+  border-radius:15px;rgb(187, 181, 183);
+  border: 3px solid grey;
   padding:10px;
   display:none;
   width: 49.2%;
@@ -19,24 +21,24 @@ h1 {
 
 .jumbotron {
   background-color:rgb(79, 236, 233);
-  border-radius:5px;rgb(187, 181, 183);
-  border: 2px solid grey;
+  border-radius:15px;rgb(187, 181, 183);
+  border: 3px solid grey;
 }
 
 form{
   background-color:rgb(79, 236, 233);
-  border-radius:3px;rgb(187, 181, 183);
-  border: 2px solid grey;
+  border-radius:15px;rgb(187, 181, 183);
+  border: 3px solid grey;
   width: 49.2%;
   display:inline-block;
   float:left;
-  padding:5px;
+  padding:10px;
 }
 
 #landingZone {
   background-color:rgb(79, 236, 233);
-  border-radius:5px;rgb(187, 181, 183);
-  border: 2px solid grey;
+  border-radius:15px;rgb(187, 181, 183);
+  border: 3px solid grey;
   width: 49%;
   padding:10px;
   float:right;
