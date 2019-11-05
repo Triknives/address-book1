@@ -38,73 +38,99 @@ AddressBook.prototype.deleteContact = function(id){
   return false;
 }
 
-
-// Contact logic ------------------
-function Contact(firstName, lastName, address, number){
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.address = address;
-  this.number = number;
-}
-
-// Contact.prototype.fullName = function() {
-//   return this.firstName + " " + this.lastName;
-// }
+// AddressBook.prototype.combineNumbers = function(number){
+  //   this.numbers = [];
+  //   numbers[i].push(this.number);
+  // }
 
 
-// Functions ------------------------
-function displayContacts(currentBook) {
-  var displayedList = $("#landingZone");
-  var htmlForListDisplay = "";
+  // Contact logic ------------------
+  function Contact(firstName, lastName, address, email, number){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.address = address;
+    this.number = number;
+    this.email = email;
+  }
 
-  currentBook.contacts.forEach(function(contact) {
-    htmlForListDisplay += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "<br>" + "</li>";
-  });
-  displayedList.html(htmlForListDisplay);
-};
+  function NumberLib (cellNumber, workNumber){
+    this.cellNumber = cellNumber,
+    this.workNumber = workNumber
+  };
 
-// Adds interactive functionality to show and delete peeps
-function attachContactListeners() {
-  $("ul#landingZone").on("click", "li", function() {
-    showContact(this.id);
-  });
-  $("#buttons").on("click", ".deleteButton", function() {
-    newAddressBook.deleteContact(this.id);
-    $("#show-contact").hide();
-    displayContacts(newAddressBook);
-  });
-};
-
-function showContact(id) {
-  var contact = newAddressBook.findContact(id);
-  $("#show-contact").show();
-  $(".first-name").html(contact.firstName);
-  $(".last-name").html(contact.lastName);
-  $(".address").html(contact.address);
-  $(".phone-number").html(contact.number);
-  var buttons = $("#buttons");
-  buttons.empty();
-  buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
-}
+  // Contact.prototype.fullName = function() {
+    //   return this.firstName + " " + this.lastName;
+    // }
 
 
+    // Functions ------------------------
+    function displayContacts(currentBook) {
+      var displayedList = $("#landingZone");
+      var htmlForListDisplay = "";
+
+      currentBook.contacts.forEach(function(contact) {
+        htmlForListDisplay += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "<br>" + "</li>";
+      });
+      displayedList.html(htmlForListDisplay);
+    };
+
+    // Adds interactive functionality to show and delete peeps
+    function attachContactListeners() {
+      $("ul#landingZone").on("click", "li", function() {
+        showContact(this.id);
+      });
+      $("#buttons").on("click", ".deleteButton", function() {
+        newAddressBook.deleteContact(this.id);
+        $("#show-contact").hide();
+        displayContacts(newAddressBook);
+      });
+    };
 
 
-// User Input logic ---------------------
-$(document).ready(function(){
-  attachContactListeners();
-  $("#contactForm").submit(function(event){
-    event.preventDefault();
+    function showContact(id) {
+      var contact = newAddressBook.findContact(id);
+      $("#show-contact").show();
+      $(".first-name").html(contact.firstName);
+      $(".last-name").html(contact.lastName);
+      $(".address").html(contact.address);
+      $(".phone-number").html(number.cellNumber);
+      $(".work-number").html(number.workNumber);
+      $(".e-mail").html(contact.email);
+
+      var buttons = $("#buttons");
+      buttons.empty();
+      buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
+    }
 
 
-    var newContact = new Contact(
-      $("#contactFirstName").val(),
-      $("#contactLastName").val(),
-      $("#contactAddress").val(),
-      $("#contactNumber").val(),
-    );
-    newAddressBook.addContact(newContact);
-    displayContacts(newAddressBook);
-  });
-  $('#contactForm')[0].reset();
-});
+
+
+    // User Input logic ---------------------
+    $(document).ready(function(){
+      attachContactListeners();
+      $("#contactForm").submit(function(event){
+        event.preventDefault();
+
+
+        var cellNumber = $("#contactNumber").val();
+        var workNumber = $("#contactNumberWork").val()
+        var number = new NumberLib (cellNumber, workNumber);
+
+        var newContact = new Contact(
+          $("#contactFirstName").val(),
+          $("#contactLastName").val(),
+          $("#contactAddress").val(),
+          // $("#contactNumber").val(),
+          // $("#contactNumberWork").val(),
+          number,
+          $("#contactEmail").val(),
+
+
+
+        );
+        newAddressBook.addContact(newContact);
+        $('#contactForm')[0].reset();
+        displayContacts(newAddressBook);
+      });
+
+    });
