@@ -38,14 +38,10 @@ AddressBook.prototype.deleteContact = function(id){
   return false;
 }
 
-// AddressBook.prototype.combineNumbers = function(number){
-  //   this.numbers = [];
-  //   numbers[i].push(this.number);
-  // }
 
 
   // Contact logic ------------------
-  function Contact(firstName, lastName, address, email, number){
+  function Contact(firstName, lastName, address, number, email){
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
@@ -58,9 +54,6 @@ AddressBook.prototype.deleteContact = function(id){
     this.workNumber = workNumber
   };
 
-  // Contact.prototype.fullName = function() {
-    //   return this.firstName + " " + this.lastName;
-    // }
 
 
     // Functions ------------------------
@@ -93,16 +86,14 @@ AddressBook.prototype.deleteContact = function(id){
       $(".first-name").html(contact.firstName);
       $(".last-name").html(contact.lastName);
       $(".address").html(contact.address);
-      $(".phone-number").html(number.cellNumber);
-      $(".work-number").html(number.workNumber);
+      $(".phone-number").html(contact.number.cellNumber);
+      $(".work-number").html(contact.number.workNumber);
       $(".e-mail").html(contact.email);
 
       var buttons = $("#buttons");
       buttons.empty();
       buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
-    }
-
-
+    };
 
 
     // User Input logic ---------------------
@@ -114,14 +105,12 @@ AddressBook.prototype.deleteContact = function(id){
 
         var cellNumber = $("#contactNumber").val();
         var workNumber = $("#contactNumberWork").val()
-        var number = new NumberLib (cellNumber, workNumber);
+        var number = new NumberLib(cellNumber, workNumber);
 
         var newContact = new Contact(
           $("#contactFirstName").val(),
           $("#contactLastName").val(),
           $("#contactAddress").val(),
-          // $("#contactNumber").val(),
-          // $("#contactNumberWork").val(),
           number,
           $("#contactEmail").val(),
 
